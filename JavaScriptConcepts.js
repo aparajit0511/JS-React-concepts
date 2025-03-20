@@ -52,3 +52,19 @@ display.call(obj1, "lucknow", "UP");
 display.apply(obj2, ["Mumbai", "MH"]);
 const b = display.bind(obj2, "Mumbai", "MH");
 console.log(b);
+
+//----------------------------------------------------------------------------------
+
+// Hosting
+// Declaring a variable or function before initializing
+
+console.log(a);
+getName();
+
+var a = 7;
+console.log(a);
+function getName() {
+  console.log("Namaste");
+}
+
+getName();
