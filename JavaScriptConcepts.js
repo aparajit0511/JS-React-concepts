@@ -15,6 +15,8 @@ function x() {
 const b = x();
 b();
 
+//----------------------------------------------------------------------------------
+
 // Higher order function
 // A function that takes a function as an argument or returns a function
 
@@ -27,3 +29,26 @@ function y(x) {
 }
 
 y(x);
+
+//----------------------------------------------------------------------------------
+
+// call . apply , bind
+// call
+var obj1 = {
+  firstName: "Aparajit",
+  lastName: "Chatterjee",
+};
+
+var obj2 = {
+  firstName: "Sachin",
+  lastName: "Tendulkar",
+};
+
+function display(hometown, state) {
+  console.log(this.firstName, this.lastName, hometown, state);
+}
+
+display.call(obj1, "lucknow", "UP");
+display.apply(obj2, ["Mumbai", "MH"]);
+const b = display.bind(obj2, "Mumbai", "MH");
+console.log(b);
