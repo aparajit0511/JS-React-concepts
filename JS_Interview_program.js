@@ -16,3 +16,21 @@ while (left < right) {
 }
 
 console.log("String is palindrome");
+
+//-----------------------------------------------------------------------------
+
+// reverse a string
+var sentence1 = "Today is a good Day";
+var sentence = sentence1.split(" ");
+var reversedString = "";
+
+for (var i = 0; i < sentence.length; i++) {
+  word = sentence[i];
+  newStr = "";
+  for (let j = 0; j < word.length; j++) {
+    newStr = word[j] + newStr;
+  }
+  reversedString = reversedString + newStr + " ";
+}
+
+console.log(reversedString);
