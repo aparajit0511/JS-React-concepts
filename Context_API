@@ -1,0 +1,64 @@
+// ThemeContext.js
+import { createContext } from "react";
+
+export const ThemeContext = createContext();
+
+// ThemeProvider.js
+import { useState } from "react";
+import { ThemeContext } from "./ThemeContext";
+
+export default function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState("light");
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+
+// index.js
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import App from "./App";
+import ThemeProvider from "./ThemeProvider";
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(
+  <StrictMode>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </StrictMode>
+);
+
+
+// App.js
+import { useContext } from "react";
+import "./styles.css";
+import { ThemeContext } from "./ThemeContext";
+
+export default function App() {
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  const appStyle = {
+    backgroundColor: theme === "light" ? "pink" : "brown",
+    // color: theme === "light" ? "pink" : "brown",
+    height: "50vh",
+  };
+
+  return (
+    <div className="App" style={appStyle}>
+      <h3>Current Theme is: {theme}</h3>
+      <h1>Hello CodeSandbox</h1>
+      <h2>Start editing to see some magic happen!</h2>
+      <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+        Toggle
+      </button>
+    </div>
+  );
+}
